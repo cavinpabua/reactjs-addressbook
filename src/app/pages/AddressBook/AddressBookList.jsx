@@ -84,17 +84,20 @@ class AddressBookList extends Component {
             {
                 title: 'First Name',
                 dataIndex: 'firstName',
-                key: 'firstName'
+                key: 'firstName',
+                // responsive: ['lg']
             },
             {
                 title: 'Middle Name',
                 dataIndex: 'middleName',
-                key: 'middleName'
+                key: 'middleName',
+                // responsive: ['lg']
             },
             {
                 title: 'Last Name',
                 dataIndex: 'lastName',
-                key: 'lastName'
+                key: 'lastName',
+                // responsive: ['lg']
             },
             {
                 title: 'Age',
@@ -104,7 +107,8 @@ class AddressBookList extends Component {
             {
                 title: 'Birthday',
                 dataIndex: 'dob',
-                key: 'dob'
+                key: 'dob',
+                // responsive: ['sm']
             },
             {
                 title: 'Action',
@@ -121,10 +125,11 @@ class AddressBookList extends Component {
         ]
         return (
             <div >
-                <Table dataSource={this.props.items} columns={columns} />
+                <Table dataSource={this.props.items} columns={columns} pagination={{ position: ["bottomCenter"] }} scroll={{ x: 500 }} />
                 <Modal
                     title="Edit Info"
                     visible={this.state.visible}
+                    onCancel={this.handleCancel}
                     footer={[
                         <Button key="back" onClick={this.handleCancel}>
                             Return

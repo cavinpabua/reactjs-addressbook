@@ -50,20 +50,22 @@ class ItemList extends Component {
         const { firstName,middleName,lastName } = this.state;
         return (
             <div>
-                <Row justify="space-around">
-                    <Col span={11} >
-                        <Space size={10}>
+                <Row justify="space-around" >
+                    <Row justify="start" gutter={[16, 16]}>
+                        <Col xs={{ span: 24 }} md={{ span: 12 }} lg={{span: 12}}>
                             <Input type="text" id="firstName" value={firstName} placeholder="First Name" onChange={this.handleFirstName} />
-                            <Input type="text" id="middleName" value={middleName} placeholder="Middle Name" onChange={this.handleMiddleName} />
-                        </Space>
 
-                    </Col>
-                    <Col span={11}>
-                        <Space size={10}>
+                        </Col>
+                        <Col xs={{ span: 24 }} md={{ span: 12 }} lg={{span: 12}}>
+                            <Input type="text" id="middleName" value={middleName} placeholder="Middle Name" onChange={this.handleMiddleName} />
+                        </Col>
+                        <Col xs={{ span: 24 }} md={{ span: 12 }} lg={{span: 12}}>
                             <Input type="text" id="lastName" value={lastName} placeholder="Last Name" onChange={this.handleLastName} />
-                            <DatePicker type="text" id="dob" ref="datePicker" value={this.state.dateValue}  selected={this.state.dob}  placeholder="Date of Birth" onChange={this.handleChangeDate} />
-                        </Space>
-                    </Col>
+                        </Col>
+                        <Col xs={{ span: 24 }} md={{ span: 12 }} lg={{span: 12}}>
+                            <DatePicker type="text" id="dob" ref="datePicker" style={{width:'100%'}} value={this.state.dateValue}  selected={this.state.dob}  placeholder="Date of Birth" onChange={this.handleChangeDate} />
+                        </Col>
+                    </Row>
                 </Row>
                 <br/>
                 <Button type="primary" onClick={this.handleSubmit}>Add Item</Button>
