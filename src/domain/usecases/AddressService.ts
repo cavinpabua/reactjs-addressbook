@@ -10,7 +10,7 @@ export class AddressServiceImpl implements AddressRepository {
   }
 
   async GetAddress(): Promise<AddressBook[]> {
-    return this.itemRepo.GetAddress();
+    return await this.itemRepo.GetAddress();
   }
 
   getAge(dob:string) {
@@ -29,7 +29,7 @@ export class AddressServiceImpl implements AddressRepository {
     }
   }
 
-  DeleteAddress(id:number) {
+  DeleteAddress(id:string) {
     return this.itemRepo.DeleteAddress(id);
   }
 

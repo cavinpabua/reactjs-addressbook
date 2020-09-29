@@ -1,6 +1,6 @@
 export class AddressBook {
 
-  id: number;
+  id: string;
   fullName: string
   firstName: string;
   lastName: string;
@@ -8,7 +8,7 @@ export class AddressBook {
   dob: string;
   age: number;
 
-  constructor(id: number, fullName: string, firstName: string, lastName:string, middleName: string, dob:string, age:number) {
+  constructor(id: string, fullName: string, firstName: string, lastName:string, middleName: string, dob:string, age:number) {
     this.id = id;
     this.fullName = fullName;
     this.firstName = firstName;

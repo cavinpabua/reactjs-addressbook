@@ -1,7 +1,7 @@
 import { AddressBook } from "../../domain/entities/AddressBook";
 import { AddressRepository } from "../../domain/repositories/AddressRepository";
 class AddressBookDTO {
-  id: number= 0;
+  id: string= "";
   fullName: string = ""
   firstName: string = "";
   lastName: string = "";
@@ -54,17 +54,17 @@ export class AddressRepositoryImpl implements AddressRepository {
     return itemArray['obj'].map((item: AddressBookDTO) => new AddressBook(item.id,item.fullName, item.firstName, item.lastName, item.middleName, item.dob, item.age));
   }
 
-  DeleteAddress(id: number) {
+  DeleteAddress(id: string) {
     // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
     let itemArray = JSON.parse(<string>this.localStorageGet(STORAGE_NAME))
-    itemArray.obj= itemArray.obj.filter(function(el: { id: number; }) { return el.id !== id});
+    itemArray.obj= itemArray.obj.filter(function(el: { id: string; }) { return el.id !== id});
     this.localStorageSet(STORAGE_NAME,JSON.stringify(itemArray))
   }
 
   UpdateAddress(item: AddressBook) {
     // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
     let itemArray = JSON.parse(<string>this.localStorageGet(STORAGE_NAME))
-    let toUpdate = itemArray.obj.findIndex(((obj: { id: number; }) => obj.id === item.id));
+    let toUpdate = itemArray.obj.findIndex(((obj: { id: string; }) => obj.id === item.id));
     itemArray.obj[toUpdate].firstName = item.firstName
     itemArray.obj[toUpdate].middleName = item.middleName
     itemArray.obj[toUpdate].lastName = item.lastName

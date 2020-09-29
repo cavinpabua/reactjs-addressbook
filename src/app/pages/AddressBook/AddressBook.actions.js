@@ -4,7 +4,7 @@ import {
   LIST_LOAD_FAILURE,
 } from "./AddressBook.types";
 import { AddressServiceImpl } from "../../../domain/usecases/AddressService";
-import { AddressRepositoryImpl } from "../../../data/repositories/AddressRepositoryImpl";
+import { AddressRepositoryImpl } from "../../../data/repositories/AddressFirebaseRepositoryImpl";
 
 export const refreshList = async (dispatch) => {
   dispatch({ type: LIST_LOAD_REQUEST });
@@ -22,33 +22,8 @@ export const refreshList = async (dispatch) => {
 export const addAddress = async (payload) => {
   const todoRepo = new AddressRepositoryImpl();
   const itemService = new AddressServiceImpl(todoRepo);
-
-  const items = await itemService.GetAddress();
-  let new_id = 1;
-  try {
-    new_id =
-      Math.max.apply(
-        Math,
-        items.map(function (o) {
-          return o.id;
-        })
-      ) + 1;
-    if (new_id === -Infinity) {
-      new_id = 1;
-    }
-  } catch (e) {}
-
-  let params = {
-    id: new_id,
-    firstName: payload.firstName,
-    middleName: payload.middleName,
-    lastName: payload.lastName,
-    dob: payload.dob,
-    age: payload.age,
-    fullName: payload.fullName
-  };
-  await itemService.AddAddress(params);
-  return { type: LIST_LOAD_SUCCESS, id: new_id, payload };
+  await itemService.AddAddress(payload);
+  return { type: LIST_LOAD_SUCCESS, payload };
 };
 
 export const deleteAddress = async (id) => {
