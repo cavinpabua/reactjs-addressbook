@@ -31,6 +31,9 @@ class AddressBookList extends Component {
         this.handleCancel = this.handleCancel.bind(this);
         this.handleChangeDate = this.handleChangeDate.bind(this);
     }
+    componentDidMount() {
+        this.props.refreshList();
+    }
     handleClick() {
         this.props.refreshList();
     }
