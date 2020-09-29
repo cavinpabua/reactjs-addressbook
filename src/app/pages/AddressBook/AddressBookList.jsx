@@ -157,7 +157,9 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    refreshList: () => dispatch(refreshList),
+    refreshList: () => dispatch(refreshList).then(()=>{
+        dispatch(refreshList)
+    }),
     deleteAddress: todo => deleteAddress(todo).then((resp) =>{
         dispatch(refreshList)
     }),
