@@ -15,17 +15,15 @@ const store = createStore(reducers, applyMiddleware(thunk));
 const App = () => (
   <Provider store={store}>
     <Layout>
-        <Content style={{ marginTop: "100px", marginBottom: "100px" }}>
-          <Row
-            justify="space-around"
-          >
-            <Col span={20} style={{ textAlign: "center" }}>
-              <ItemList />
-              <br />
-              <ItemForm />
-            </Col>
-          </Row>
-        </Content>
+      <Content style={{ marginTop: "100px", marginBottom: "100px" }}>
+        <Row justify="space-around">
+          <Col span={20} style={{ textAlign: "center" }}>
+            <ItemList />
+            <br />
+            <ItemForm />
+          </Col>
+        </Row>
+      </Content>
     </Layout>
   </Provider>
 );

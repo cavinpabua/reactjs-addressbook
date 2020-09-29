@@ -84,20 +84,17 @@ class AddressBookList extends Component {
             {
                 title: 'First Name',
                 dataIndex: 'firstName',
-                key: 'firstName',
-                // responsive: ['lg']
+                key: 'firstName'
             },
             {
                 title: 'Middle Name',
                 dataIndex: 'middleName',
-                key: 'middleName',
-                // responsive: ['lg']
+                key: 'middleName'
             },
             {
                 title: 'Last Name',
                 dataIndex: 'lastName',
-                key: 'lastName',
-                // responsive: ['lg']
+                key: 'lastName'
             },
             {
                 title: 'Age',
@@ -107,8 +104,7 @@ class AddressBookList extends Component {
             {
                 title: 'Birthday',
                 dataIndex: 'dob',
-                key: 'dob',
-                // responsive: ['sm']
+                key: 'dob'
             },
             {
                 title: 'Action',
@@ -147,7 +143,7 @@ class AddressBookList extends Component {
 
                         <Space size={10} direction="vertical">
                             <Input type="text" id="lastName" value={lastName} placeholder="Last Name" onChange={this.handleLastName} />
-                            <DatePicker type="text" id="dob" ref="datePicker" value={this.state.dateValue}  selected={this.state.dob}  placeholder="Date of Birth" onChange={this.handleChangeDate} />
+                            <DatePicker type="text" id="dob" ref="datePicker" style={{width:'100%'}} value={this.state.dateValue}  selected={this.state.dob}  placeholder="Date of Birth" onChange={this.handleChangeDate} />
                         </Space>
                     </Space>
                 </Modal>
