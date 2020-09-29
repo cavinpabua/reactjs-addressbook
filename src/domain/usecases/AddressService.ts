@@ -14,7 +14,7 @@ export class AddressServiceImpl implements AddressRepository {
   }
 
   AddAddress(item:AddressBook) {
-    if (item.firstName.length > 0)
+    if (item.firstName.length > 0 && item.lastName.length > 0 && item.dob.length > 0)
     return this.itemRepo.AddAddress(item);
   }
 

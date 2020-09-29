@@ -11,7 +11,7 @@ class ItemList extends Component {
             middleName: "",
             lastName: "",
             dob: "",
-            date: null,
+            date: "",
             dateValue: ""
         };
         this.handleFirstName = this.handleFirstName.bind(this);
@@ -40,8 +40,10 @@ class ItemList extends Component {
     handleSubmit(event) {
         event.preventDefault();
         const { firstName,middleName,lastName,dob } = this.state;
-        this.props.addAddress({ firstName,middleName,lastName,dob });
-        this.setState({ firstName:"",middleName:"",lastName:"",dob:null,dateValue:"" });
+        if (firstName.length > 0 && lastName.length > 0 && dob.length > 0) {
+            this.props.addAddress({ firstName,middleName,lastName,dob });
+            this.setState({ firstName:"",middleName:"",lastName:"",dob:"",dateValue:"" });
+        }
     }
 
     render() {
