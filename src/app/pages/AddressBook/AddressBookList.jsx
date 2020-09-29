@@ -35,7 +35,7 @@ class AddressBookList extends Component {
         this.props.refreshList();
     }
     handleDelete(id) {
-        this.props.deleteAddress(id)
+        this.props.deleteAddress(id).then(r => this.props.refreshList())
     }
     handleFirstName(event) {
         this.setState({ firstName: event.target.value });
@@ -62,7 +62,7 @@ class AddressBookList extends Component {
             visible: false,
         });
         const { firstName,middleName,lastName,dob,id } = this.state;
-        this.props.UpdateAddress({ firstName,middleName,lastName,dob,id });
+        this.props.UpdateAddress({ firstName,middleName,lastName,dob,id }).then(r => this.props.refreshList());
     };
 
     handleCancel(e){
