@@ -2,10 +2,13 @@ import { AddressBook } from "../../domain/entities/AddressBook";
 import { AddressRepository } from "../../domain/repositories/AddressRepository";
 class AddressBookDTO {
   id: number= 0;
+  fullName: string = ""
   firstName: string = "";
   lastName: string = "";
   middleName: string = "";
   dob: string = "";
+  age: number = 0;
+
 }
 
 const STORAGE_NAME = "AddressBook";
@@ -29,7 +32,7 @@ export class AddressRepositoryImpl implements AddressRepository {
     // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
     let itemArray = JSON.parse(<string>this.localStorageGet(STORAGE_NAME))
     if (!this.isEmpty(itemArray)) {
-      return itemArray.obj.map((item: AddressBookDTO) => new AddressBook(item.id, item.firstName, item.lastName, item.middleName, item.dob));
+      return itemArray.obj.map((item: AddressBookDTO) => new AddressBook(item.id,item.fullName, item.firstName, item.lastName, item.middleName, item.dob, item.age));
     }
 
   }
@@ -48,7 +51,7 @@ export class AddressRepositoryImpl implements AddressRepository {
       this.localStorageSet(STORAGE_NAME,JSON.stringify(itemArray))
     }
 
-    return itemArray['obj'].map((item: AddressBookDTO) => new AddressBook(item.id, item.firstName, item.lastName, item.middleName, item.dob));
+    return itemArray['obj'].map((item: AddressBookDTO) => new AddressBook(item.id,item.fullName, item.firstName, item.lastName, item.middleName, item.dob, item.age));
   }
 
   DeleteAddress(id: number) {
@@ -66,6 +69,9 @@ export class AddressRepositoryImpl implements AddressRepository {
     itemArray.obj[toUpdate].middleName = item.middleName
     itemArray.obj[toUpdate].lastName = item.lastName
     itemArray.obj[toUpdate].dob = item.dob
+    itemArray.obj[toUpdate].age = item.age
+    itemArray.obj[toUpdate].fullName = item.fullName
+
     this.localStorageSet(STORAGE_NAME,JSON.stringify(itemArray))
   }
 

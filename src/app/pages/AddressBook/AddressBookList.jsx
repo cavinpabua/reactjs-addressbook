@@ -16,6 +16,8 @@ class AddressBookList extends Component {
             middleName:"",
             lastName:"",
             id: "",
+            age: 0,
+            fullName: "",
             dob:"",
             dateValue: ""
         };
@@ -72,24 +74,34 @@ class AddressBookList extends Component {
         const { firstName, middleName, lastName } = this.state;
         let columns = [
             {
+                title: 'Full Name',
+                dataIndex: 'fullName',
+                key: 'fullName'
+            },
+            {
                 title: 'First Name',
                 dataIndex: 'firstName',
-                key: 'id'
+                key: 'firstName'
             },
             {
                 title: 'Middle Name',
                 dataIndex: 'middleName',
-                key: 'id'
+                key: 'middleName'
             },
             {
                 title: 'Last Name',
                 dataIndex: 'lastName',
-                key: 'id'
+                key: 'lastName'
+            },
+            {
+                title: 'Age',
+                dataIndex: 'age',
+                key: 'age'
             },
             {
                 title: 'Birthday',
                 dataIndex: 'dob',
-                key: 'id'
+                key: 'dob'
             },
             {
                 title: 'Action',

@@ -1,6 +1,6 @@
 import { AddressBook } from "../entities/AddressBook";
 import { AddressRepository } from "../repositories/AddressRepository";
-
+import moment from "moment";
 
 export class AddressServiceImpl implements AddressRepository {
   itemRepo: AddressRepository;
@@ -13,15 +13,31 @@ export class AddressServiceImpl implements AddressRepository {
     return this.itemRepo.GetAddress();
   }
 
+  getAge(dob:string) {
+    return moment().diff(moment(dob), 'years');
+  }
+
+  getFullName(item:AddressBook){
+    return item.firstName + " " + item.middleName + " " + item.lastName
+  }
+
   AddAddress(item:AddressBook) {
-    if (item.firstName.length > 0 && item.lastName.length > 0 && item.dob.length > 0)
-    return this.itemRepo.AddAddress(item);
+    if (item.firstName.length > 0 && item.lastName.length > 0 && item.middleName.length > 0 && item.dob.length > 0) {
+      item.age = this.getAge(item.dob)
+      item.fullName = this.getFullName(item)
+      return this.itemRepo.AddAddress(item);
+    }
   }
 
   DeleteAddress(id:number) {
     return this.itemRepo.DeleteAddress(id);
   }
+
   UpdateAddress(item:AddressBook) {
-    return this.itemRepo.UpdateAddress(item);
+    if (item.firstName.length > 0 && item.lastName.length > 0 && item.middleName.length > 0 && item.dob.length > 0) {
+      item.age = this.getAge(item.dob)
+      item.fullName = this.getFullName(item)
+      return this.itemRepo.UpdateAddress(item);
+    }
   }
 }
