@@ -43,7 +43,7 @@ export const addAddress = async (payload) => {
     firstName: payload.firstName,
     middleName: payload.middleName,
     lastName: payload.lastName,
-    dob: payload.dob
+    dob: payload.dob,
   };
   await itemService.AddAddress(params);
   return { type: LIST_LOAD_SUCCESS, id: new_id, payload };

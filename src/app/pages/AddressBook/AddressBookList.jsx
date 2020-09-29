@@ -1,7 +1,7 @@
 import React, { Component }  from "react";
 import { connect } from "react-redux";
 import { refreshList,deleteAddress,UpdateAddress } from "./AddressBook.actions";
-import {Table, Space, Button, Input, DatePicker, Modal, Col, Row} from "antd";
+import {Table, Space, Button, Input, DatePicker, Modal} from "antd";
 import moment from "moment";
 
 
